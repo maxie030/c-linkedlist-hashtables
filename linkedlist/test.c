@@ -2,8 +2,9 @@
 //#define NDEBUG
 #include <assert.h>
 #include "LinkedList.h"
+#include "hashtable.h"
 
-int main() {
+void linkedListTest() {
 	struct LinkedList* list = createLinkedList();
 
 	addToEnd(list, 1);
@@ -33,5 +34,31 @@ int main() {
 	//printf("%d\n", get(head, 0));
 	//printf("hello wordl");
 	//free(list);
+}
+
+void hashtableTest() {
+	struct HashTable* hash = createHashtable(sizeof(int), sizeof(double));
+	int b = 5;
+	int c = 1;
+	double a = 4.8;
+	printf("b\n");
+
+	put(hash, &b, &a);
+	printf("b\n");
+
+	put(hash, &c, &a);
+	//put(hash, 0, 4);
+
+
+
+	printHashTable(hash);
+	printf("size: %u", hash->size);
+}
+
+
+
+int main() {
+	//linkedListTest();
+	hashtableTest();
 	return 0;
 }
