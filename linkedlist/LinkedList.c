@@ -3,7 +3,7 @@
 #include "LinkedList.h"
 
 
-struct LinkedList* createLinkedList() {
+LinkedList* createLinkedList() {
 	struct LinkedList* list = malloc(sizeof(LinkedList));
 	if (list == NULL) return NULL;
 	list->head = NULL;
@@ -11,7 +11,7 @@ struct LinkedList* createLinkedList() {
 
 }
 
-struct Node* getNewNode(int x) {
+Node* getNewNode(int x) {
 	struct Node* newNode = calloc(1, sizeof(struct Node));
 	if (newNode) {
 		newNode->data = x;
@@ -20,7 +20,7 @@ struct Node* getNewNode(int x) {
 	return newNode;
 }
 
-void addToEnd(struct LinkedList* list, int value) {
+void addToEnd(LinkedList* list, int value) {
 	struct Node* newNode = getNewNode(value);
 
 	if (list->head == NULL) {
@@ -37,7 +37,7 @@ void addToEnd(struct LinkedList* list, int value) {
 	last->next = newNode;
 }
 
-void addToIndexPosition(struct LinkedList* list, unsigned int pos, int value) {
+void addToIndexPosition(LinkedList* list, unsigned int pos, int value) {
 	Node* current = list->head;
 	struct Node* node = getNewNode(value);
 	if (pos == 0) {
@@ -55,7 +55,7 @@ void addToIndexPosition(struct LinkedList* list, unsigned int pos, int value) {
 	current->next = node;
 }
 
-void changeValueOnPosition(struct LinkedList* list, unsigned int pos, int value) {
+void changeValueOnPosition(LinkedList* list, unsigned int pos, int value) {
 	Node* current = list->head;
 	if (current == NULL || current->next == NULL) {
 		printf("Index out of range.\n");
@@ -75,7 +75,7 @@ void changeValueOnPosition(struct LinkedList* list, unsigned int pos, int value)
 }
 
 
-int get(struct LinkedList* list, int index) {
+int get(LinkedList* list, int index) {
 	Node* current = list->head;
 
 	while (index != 0) {
@@ -89,7 +89,7 @@ int get(struct LinkedList* list, int index) {
 	return current->data;
 }
 
-long size(struct LinkedList* list) {
+long size(LinkedList* list) {
 	if (list == NULL || list->head == NULL) return 0;
 
 	Node* current = list->head;
@@ -104,7 +104,7 @@ long size(struct LinkedList* list) {
 	return count;
 }
 
-void print(struct LinkedList* list) {
+void print(LinkedList* list) {
 	if (list->head == NULL) return;
 
 	Node* current = list->head;
